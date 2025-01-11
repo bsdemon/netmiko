@@ -17,7 +17,7 @@ class OptilinkGOLT924Base(CiscoBaseConnection):
         if self.check_enable_mode():
             self.write_channel(self.normalize_cmd(exit_command))
             self.read_until_pattern(pattern=exit_command)
-            output += self.read_until_pattern(pattern=r"gpon>")
+            output += self.read_until_pattern(pattern=r".*>")
             if self.check_enable_mode():
                 raise ValueError("Failed to exit enable mode.")
         return output
